@@ -25,7 +25,7 @@ export default function Tasks() {
   const [listMeta, setListMeta] = useState<{ title: string; subtitle: string; color: string } | null>(null)
   const [tasks, setTasks] = useState<Task[]>([])
   const [loading, setLoading] = useState(true)
-  const [showCompleted, setShowCompleted] = useState(false)
+  const [filter, setFilter] = useState<'all' | 'pending' | 'completed'>('all')
   const [editingTask, setEditingTask] = useState<Task | null>(null)
   const [deletingTaskId, setDeletingTaskId] = useState<string | null>(null)
   const [togglingId, setTogglingId] = useState<string | null>(null)
@@ -44,7 +44,7 @@ export default function Tasks() {
       setListMeta({
         title: todo.title,
         subtitle: todo.description ?? '',
-        color: prefs[id]?.color ?? '#2563EB',
+        color: prefs[id]?.color ?? '#1C1C1A',
       })
       setTasks(taskList.map(apiToTask))
     } catch (err: unknown) {
@@ -122,30 +122,33 @@ export default function Tasks() {
     }
   }
 
-  const visibleTasks = showCompleted ? tasks : tasks.filter((t) => !t.completed)
+  const visibleTasks =
+    filter === 'pending' ? tasks.filter((t) => !t.completed) :
+    filter === 'completed' ? tasks.filter((t) => t.completed) :
+    tasks
   const completedCount = tasks.filter((t) => t.completed).length
-  const color = listMeta?.color ?? '#2563EB'
+  const color = listMeta?.color ?? '#1C1C1A'
 
   return (
-    <div style={{ minHeight: '100vh', backgroundColor: '#f8fafc', fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+    <div style={{ minHeight: '100vh', backgroundColor: '#EEEDE8', fontFamily: 'system-ui, -apple-system, sans-serif' }}>
       <Navbar />
 
       <main style={{ maxWidth: 800, margin: '0 auto', padding: '32px 24px' }}>
         {/* Breadcrumb */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 20, fontSize: 14, color: '#6b7280' }}>
-          <Link to="/" style={{ color: '#2563EB', textDecoration: 'none', fontWeight: 500 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 20, fontSize: 14, color: '#6B6B65' }}>
+          <Link to="/" style={{ color: '#1C1C1A', textDecoration: 'none', fontWeight: 600 }}>
             Mis listas
           </Link>
           <svg width={14} height={14} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <polyline points="9 18 15 12 9 6" />
           </svg>
-          <span style={{ color: '#374151', fontWeight: 500 }}>
+          <span style={{ color: '#6B6B65', fontWeight: 500 }}>
             {loading ? '...' : (listMeta?.title ?? 'Lista')}
           </span>
         </div>
 
         {loading && (
-          <div style={{ textAlign: 'center', padding: '60px 24px', color: '#9ca3af' }}>
+          <div style={{ textAlign: 'center', padding: '60px 24px', color: '#AEADA8' }}>
             <p>Cargando tareas...</p>
           </div>
         )}
@@ -153,7 +156,7 @@ export default function Tasks() {
         {!loading && error && (
           <div style={{ textAlign: 'center', padding: '48px 24px', color: '#dc2626' }}>
             <p>{error}</p>
-            <button onClick={fetchData} style={{ marginTop: 12, padding: '9px 20px', border: 'none', borderRadius: 8, backgroundColor: '#2563EB', color: '#fff', cursor: 'pointer', fontWeight: 600 }}>
+            <button onClick={fetchData} style={{ marginTop: 12, padding: '9px 20px', border: 'none', borderRadius: 20, backgroundColor: '#1C1C1A', color: '#fff', cursor: 'pointer', fontWeight: 600 }}>
               Reintentar
             </button>
           </div>
@@ -161,71 +164,60 @@ export default function Tasks() {
 
         {!loading && !error && listMeta && (
           <>
-            {/* Header */}
-            <div style={{ marginBottom: 28 }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 4 }}>
-                <div style={{ width: 14, height: 14, borderRadius: '50%', backgroundColor: color, flexShrink: 0 }} />
-                <h1 style={{ margin: 0, fontSize: 26, fontWeight: 800, color: '#111827', letterSpacing: '-0.02em' }}>
-                  {listMeta.title}
-                </h1>
-              </div>
+            {/* Hero card */}
+            <div
+              style={{
+                backgroundColor: color,
+                borderRadius: 20,
+                padding: '28px 28px 24px',
+                marginBottom: 24,
+              }}
+            >
+              <h1 style={{ margin: 0, fontSize: 26, fontWeight: 800, color: '#fff', letterSpacing: '-0.02em' }}>
+                {listMeta.title}
+              </h1>
               {listMeta.subtitle && (
-                <p style={{ margin: '0 0 0 26px', fontSize: 14, color: '#6b7280' }}>
+                <p style={{ margin: '6px 0 0', fontSize: 14, color: 'rgba(255,255,255,0.75)' }}>
                   {listMeta.subtitle}
                 </p>
               )}
+              <p style={{ margin: '16px 0 0', fontSize: 13, color: 'rgba(255,255,255,0.7)', fontWeight: 600 }}>
+                {completedCount} de {tasks.length} completadas
+              </p>
             </div>
 
-            {/* Stats + toggles */}
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16, flexWrap: 'wrap', gap: 12 }}>
-              <span style={{ fontSize: 13, color: '#6b7280' }}>
-                {completedCount} de {tasks.length} tareas completadas
-              </span>
-              <div style={{ display: 'flex', gap: 8 }}>
+            {/* Filter toggles */}
+            <div style={{ display: 'flex', gap: 8, marginBottom: 16 }}>
+              {(['all', 'pending', 'completed'] as const).map((f) => (
                 <button
-                  onClick={() => setShowCompleted(false)}
+                  key={f}
+                  onClick={() => setFilter(f)}
                   style={{
-                    padding: '6px 14px',
-                    border: '1px solid #e5e7eb',
-                    borderRadius: 8,
-                    fontSize: 12,
+                    padding: '8px 18px',
+                    border: 'none',
+                    borderRadius: 20,
+                    fontSize: 13,
                     fontWeight: 700,
-                    letterSpacing: '0.04em',
-                    textTransform: 'uppercase',
                     cursor: 'pointer',
-                    backgroundColor: !showCompleted ? '#2563EB' : '#fff',
-                    color: !showCompleted ? '#fff' : '#374151',
+                    backgroundColor: filter === f ? '#1C1C1A' : '#fff',
+                    color: filter === f ? '#fff' : '#6B6B65',
+                    boxShadow: filter === f ? 'none' : '0 1px 4px rgba(0,0,0,0.06)',
                   }}
                 >
-                  Ocultar completadas
+                  {f === 'all' ? 'Todas' : f === 'pending' ? 'Pendientes' : 'Completadas'}
                 </button>
-                <button
-                  onClick={() => setShowCompleted(true)}
-                  style={{
-                    padding: '6px 14px',
-                    border: '1px solid #e5e7eb',
-                    borderRadius: 8,
-                    fontSize: 12,
-                    fontWeight: 700,
-                    letterSpacing: '0.04em',
-                    textTransform: 'uppercase',
-                    cursor: 'pointer',
-                    backgroundColor: showCompleted ? '#2563EB' : '#fff',
-                    color: showCompleted ? '#fff' : '#374151',
-                  }}
-                >
-                  Ver completadas
-                </button>
-              </div>
+              ))}
             </div>
 
             {/* Task list */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
               {visibleTasks.length === 0 && (
-                <div style={{ textAlign: 'center', padding: '40px 24px', color: '#9ca3af', fontSize: 14 }}>
-                  {showCompleted
-                    ? 'Sin tareas aún. ¡Agrega una abajo!'
-                    : 'Todas las tareas completadas. Activa "Ver completadas".'}
+                <div style={{ textAlign: 'center', padding: '40px 24px', color: '#AEADA8', fontSize: 14 }}>
+                  {filter === 'completed'
+                    ? 'No hay tareas completadas aún.'
+                    : filter === 'pending'
+                    ? 'No hay tareas pendientes. ¡Todo listo!'
+                    : 'Sin tareas aún. ¡Agrega una abajo!'}
                 </div>
               )}
               {visibleTasks.map((task) => (

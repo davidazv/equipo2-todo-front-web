@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Navbar, SearchBar, SearchResultItem } from '../../components'
 import type { ApiTodo } from '../../types'
-import { getTodos } from '../../services/todoService'
+import { searchTodos } from '../../services/todoService'
 
 interface SearchItem {
   id: string
@@ -52,35 +52,35 @@ const flattenTodos = (todos: ApiTodo[]): SearchItem[] => {
 export default function Search() {
   const navigate = useNavigate()
   const [query, setQuery] = useState('')
-  const [allItems, setAllItems] = useState<SearchItem[]>([])
-  const [loading, setLoading] = useState(true)
+  const [filtered, setFiltered] = useState<SearchItem[]>([])
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    getTodos()
-      .then((todos) => setAllItems(flattenTodos(todos)))
-      .catch(() => setAllItems([]))
-      .finally(() => setLoading(false))
-  }, [])
-
-  const filtered = query.trim()
-    ? allItems.filter(
-        (item) =>
-          item.title.toLowerCase().includes(query.toLowerCase()) ||
-          item.description.toLowerCase().includes(query.toLowerCase()) ||
-          item.listName.toLowerCase().includes(query.toLowerCase()),
-      )
-    : []
+    const q = query.trim()
+    if (q.length < 2) {
+      setFiltered([])
+      return
+    }
+    setLoading(true)
+    const timer = setTimeout(() => {
+      searchTodos(q)
+        .then((todos) => setFiltered(flattenTodos(todos)))
+        .catch(() => setFiltered([]))
+        .finally(() => setLoading(false))
+    }, 400)
+    return () => clearTimeout(timer)
+  }, [query])
 
   return (
-    <div style={{ minHeight: '100vh', backgroundColor: '#f8fafc', fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+    <div style={{ minHeight: '100vh', backgroundColor: '#EEEDE8', fontFamily: 'system-ui, -apple-system, sans-serif' }}>
       <Navbar />
 
       <main style={{ maxWidth: 800, margin: '0 auto', padding: '32px 24px' }}>
         <div style={{ marginBottom: 28 }}>
-          <h1 style={{ margin: '0 0 6px', fontSize: 26, fontWeight: 800, color: '#111827', letterSpacing: '-0.02em' }}>
+          <h1 style={{ margin: '0 0 6px', fontSize: 26, fontWeight: 800, color: '#1C1C1A', letterSpacing: '-0.02em' }}>
             Buscar
           </h1>
-          <p style={{ margin: 0, fontSize: 14, color: '#6b7280' }}>
+          <p style={{ margin: 0, fontSize: 14, color: '#6B6B65' }}>
             Busca en todas tus listas y tareas
           </p>
         </div>
@@ -94,24 +94,24 @@ export default function Search() {
         </div>
 
         {loading && (
-          <div style={{ textAlign: 'center', padding: '40px', color: '#9ca3af' }}>
-            <p>Cargando...</p>
+          <div style={{ textAlign: 'center', padding: '40px', color: '#AEADA8' }}>
+            <p>Buscando...</p>
           </div>
         )}
 
         {!loading && query.trim() ? (
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 14 }}>
-              <h2 style={{ margin: 0, fontSize: 12, fontWeight: 700, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+              <h2 style={{ margin: 0, fontSize: 12, fontWeight: 700, color: '#6B6B65', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
                 Resultados
               </h2>
-              <span style={{ fontSize: 12, fontWeight: 700, backgroundColor: '#2563EB', color: '#fff', borderRadius: 9999, padding: '1px 8px' }}>
+              <span style={{ fontSize: 12, fontWeight: 700, backgroundColor: '#1C1C1A', color: '#fff', borderRadius: 9999, padding: '1px 8px' }}>
                 {filtered.length}
               </span>
             </div>
 
             {filtered.length === 0 ? (
-              <div style={{ textAlign: 'center', padding: '48px 24px', color: '#9ca3af' }}>
+              <div style={{ textAlign: 'center', padding: '48px 24px', color: '#AEADA8' }}>
                 <p style={{ margin: 0, fontSize: 15 }}>Sin resultados para &ldquo;{query}&rdquo;</p>
                 <p style={{ margin: '8px 0 0', fontSize: 13 }}>Intenta con otras palabras.</p>
               </div>
@@ -132,8 +132,8 @@ export default function Search() {
           </div>
         ) : (
           !loading && (
-            <div style={{ textAlign: 'center', padding: '60px 24px', color: '#9ca3af' }}>
-              <svg width={48} height={48} fill="none" viewBox="0 0 24 24" stroke="#d1d5db" strokeWidth={1.5} style={{ display: 'block', margin: '0 auto 16px' }}>
+            <div style={{ textAlign: 'center', padding: '60px 24px', color: '#AEADA8' }}>
+              <svg width={48} height={48} fill="none" viewBox="0 0 24 24" stroke="#D8D7D2" strokeWidth={1.5} style={{ display: 'block', margin: '0 auto 16px' }}>
                 <circle cx="11" cy="11" r="8" />
                 <line x1="21" y1="21" x2="16.65" y2="16.65" />
               </svg>

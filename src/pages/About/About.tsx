@@ -21,7 +21,7 @@ export default function About() {
     <div
       style={{
         minHeight: '100vh',
-        backgroundColor: '#f8fafc',
+        backgroundColor: '#EEEDE8',
         fontFamily: 'system-ui, -apple-system, sans-serif',
         display: 'flex',
         flexDirection: 'column',
@@ -33,13 +33,13 @@ export default function About() {
         {/* Hero */}
         <div
           style={{
-            background: 'linear-gradient(135deg, #1e3a5f 0%, #2563EB 100%)',
+            backgroundColor: '#1C1C1A',
             padding: '72px 24px',
             textAlign: 'center',
             color: '#fff',
           }}
         >
-          <span style={{ display: 'inline-block', fontSize: 11, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: '#bfdbfe', marginBottom: 16 }}>
+          <span style={{ display: 'inline-block', fontSize: 11, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: '#C5E63E', marginBottom: 16 }}>
             Sobre EduTask
           </span>
           <h1 style={{ margin: '0 0 16px', fontSize: 42, fontWeight: 900, letterSpacing: '-0.03em', lineHeight: 1.15 }}>
@@ -47,7 +47,7 @@ export default function About() {
             <br />
             para estudiantes.
           </h1>
-          <p style={{ margin: '0 auto', maxWidth: 520, fontSize: 17, color: '#bfdbfe', lineHeight: 1.65 }}>
+          <p style={{ margin: '0 auto', maxWidth: 520, fontSize: 17, color: '#AEADA8', lineHeight: 1.65 }}>
             Un espacio para organizar tus listas de estudio, hacer seguimiento del progreso
             y mantener el foco en lo que importa.
           </p>
@@ -67,15 +67,15 @@ export default function About() {
         >
           {/* Left — About */}
           <div>
-            <h2 style={{ margin: '0 0 16px', fontSize: 22, fontWeight: 800, color: '#111827', letterSpacing: '-0.01em' }}>
+            <h2 style={{ margin: '0 0 16px', fontSize: 22, fontWeight: 800, color: '#1C1C1A', letterSpacing: '-0.01em' }}>
               Sobre el proyecto
             </h2>
-            <p style={{ margin: '0 0 16px', fontSize: 15, color: '#374151', lineHeight: 1.7 }}>
+            <p style={{ margin: '0 0 16px', fontSize: 15, color: '#6B6B65', lineHeight: 1.7 }}>
               EduTask es una aplicación de gestión de tareas académicas construida con React, Firebase y
               un backend en Quarkus. Permite organizar listas de estudio, agregar tareas con prioridades
               y fechas límite, y hacer seguimiento visual del progreso.
             </p>
-            <p style={{ margin: '0 0 24px', fontSize: 15, color: '#374151', lineHeight: 1.7 }}>
+            <p style={{ margin: '0 0 24px', fontSize: 15, color: '#6B6B65', lineHeight: 1.7 }}>
               El proyecto fue desarrollado como ejercicio full-stack orientado a componentes,
               con énfasis en autenticación segura, buenas prácticas de API y una UI limpia y accesible.
             </p>
@@ -84,24 +84,25 @@ export default function About() {
               style={{
                 margin: '0 0 28px',
                 padding: '16px 20px',
-                borderLeft: '4px solid #2563EB',
-                backgroundColor: '#eff6ff',
-                borderRadius: '0 8px 8px 0',
+                borderLeft: '4px solid #C5E63E',
+                backgroundColor: '#fff',
+                borderRadius: '0 12px 12px 0',
                 fontStyle: 'italic',
                 fontSize: 15,
-                color: '#1e40af',
+                color: '#1C1C1A',
                 lineHeight: 1.6,
+                boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
               }}
             >
               "La mente no es un recipiente que llenar, sino un fuego que encender."
               <br />
-              <span style={{ fontStyle: 'normal', fontWeight: 600, fontSize: 13, color: '#3b82f6' }}>
+              <span style={{ fontStyle: 'normal', fontWeight: 600, fontSize: 13, color: '#6B6B65' }}>
                 — Plutarco
               </span>
             </blockquote>
 
             <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-              <Tag label="React 19" color="#eff6ff" textColor="#1d4ed8" />
+              <Tag label="React 19" color="#F5F5F1" textColor="#1C1C1A" />
               <Tag label="Firebase" color="#fff7ed" textColor="#c2410c" />
               <Tag label="Quarkus" color="#f0fdf4" textColor="#15803d" />
               <Tag label="TypeScript" color="#fef9c3" textColor="#a16207" />
@@ -113,20 +114,19 @@ export default function About() {
             <div
               style={{
                 backgroundColor: '#fff',
-                border: '1px solid #e5e7eb',
-                borderRadius: 16,
+                borderRadius: 20,
                 padding: 28,
-                boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
+                boxShadow: '0 4px 16px rgba(0,0,0,0.08)',
               }}
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 20 }}>
-                <Avatar size={56} initials={initial} color="#f97316" />
+                <Avatar size={56} initials={initial} color="#1C1C1A" />
                 <div>
-                  <h3 style={{ margin: 0, fontSize: 17, fontWeight: 700, color: '#111827' }}>
+                  <h3 style={{ margin: 0, fontSize: 17, fontWeight: 700, color: '#1C1C1A' }}>
                     {displayName}
                   </h3>
                   {email && (
-                    <p style={{ margin: '3px 0 0', fontSize: 13, color: '#6b7280' }}>{email}</p>
+                    <p style={{ margin: '3px 0 0', fontSize: 13, color: '#6B6B65' }}>{email}</p>
                   )}
                 </div>
               </div>
@@ -134,13 +134,12 @@ export default function About() {
               <div
                 style={{
                   padding: '16px',
-                  backgroundColor: '#f9fafb',
-                  borderRadius: 10,
-                  border: '1px solid #f3f4f6',
+                  backgroundColor: '#F5F5F1',
+                  borderRadius: 12,
                   marginBottom: 20,
                 }}
               >
-                <h4 style={{ margin: '0 0 12px', fontSize: 11, fontWeight: 700, color: '#9ca3af', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+                <h4 style={{ margin: '0 0 12px', fontSize: 11, fontWeight: 700, color: '#AEADA8', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
                   Info
                 </h4>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
@@ -159,7 +158,7 @@ export default function About() {
                   gap: 8,
                   padding: '13px',
                   border: '1.5px solid #fecaca',
-                  borderRadius: 10,
+                  borderRadius: 12,
                   backgroundColor: '#fff',
                   color: '#ef4444',
                   fontSize: 15,
@@ -177,12 +176,12 @@ export default function About() {
         </div>
       </main>
 
-      <footer style={{ borderTop: '1px solid #e5e7eb', backgroundColor: '#fff', padding: '20px 24px' }}>
+      <footer style={{ borderTop: '1px solid #D8D7D2', backgroundColor: '#EEEDE8', padding: '20px 24px' }}>
         <div style={{ maxWidth: 1100, margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12 }}>
-          <span style={{ fontSize: 14, fontWeight: 700, color: '#111827' }}>
-            <span style={{ color: '#2563EB' }}>✦</span> EduTask v1.0.0
+          <span style={{ fontSize: 14, fontWeight: 700, color: '#1C1C1A' }}>
+            <span style={{ color: '#C5E63E' }}>✦</span> EduTask v1.0.0
           </span>
-          <span style={{ fontSize: 13, color: '#9ca3af' }}>
+          <span style={{ fontSize: 13, color: '#AEADA8' }}>
             React + Firebase + Quarkus
           </span>
         </div>
@@ -200,10 +199,10 @@ interface StatRowProps {
 function StatRow({ icon, label, value }: StatRowProps) {
   return (
     <div style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>
-      <span style={{ fontSize: 14, color: '#2563EB', flexShrink: 0, marginTop: 1 }}>{icon}</span>
+      <span style={{ fontSize: 14, color: '#C5E63E', flexShrink: 0, marginTop: 1 }}>{icon}</span>
       <div>
-        <span style={{ fontSize: 12, color: '#9ca3af', display: 'block', marginBottom: 1 }}>{label}</span>
-        <span style={{ fontSize: 13, color: '#374151', fontWeight: 500 }}>{value}</span>
+        <span style={{ fontSize: 12, color: '#AEADA8', display: 'block', marginBottom: 1 }}>{label}</span>
+        <span style={{ fontSize: 13, color: '#1C1C1A', fontWeight: 500 }}>{value}</span>
       </div>
     </div>
   )

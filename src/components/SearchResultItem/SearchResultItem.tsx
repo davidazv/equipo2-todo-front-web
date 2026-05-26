@@ -24,10 +24,17 @@ export default function SearchResultItem({
         justifyContent: 'space-between',
         padding: '14px 18px',
         backgroundColor: '#fff',
-        border: '1px solid #e5e7eb',
-        borderRadius: 10,
+        borderRadius: 14,
         gap: 12,
         cursor: onClick ? 'pointer' : 'default',
+        boxShadow: '0 1px 4px rgba(0,0,0,0.06)',
+        transition: 'box-shadow 0.15s',
+      }}
+      onMouseEnter={(e) => {
+        if (onClick) (e.currentTarget as HTMLDivElement).style.boxShadow = '0 4px 16px rgba(0,0,0,0.10)'
+      }}
+      onMouseLeave={(e) => {
+        (e.currentTarget as HTMLDivElement).style.boxShadow = '0 1px 4px rgba(0,0,0,0.06)'
       }}
     >
       <div style={{ flex: 1, minWidth: 0 }}>
@@ -36,7 +43,7 @@ export default function SearchResultItem({
             margin: 0,
             fontSize: 15,
             fontWeight: 600,
-            color: '#111827',
+            color: '#1C1C1A',
             overflow: 'hidden',
             textOverflow: 'ellipsis',
             whiteSpace: 'nowrap',
@@ -48,7 +55,7 @@ export default function SearchResultItem({
           style={{
             margin: '3px 0 0',
             fontSize: 13,
-            color: '#6b7280',
+            color: '#6B6B65',
             display: 'flex',
             alignItems: 'center',
             gap: 4,
@@ -74,14 +81,14 @@ export default function SearchResultItem({
           <span
             style={{
               fontSize: 12,
-              color: '#374151',
-              backgroundColor: '#f9fafb',
-              border: '1px solid #e5e7eb',
+              color: '#6B6B65',
+              backgroundColor: '#F5F5F1',
               borderRadius: 6,
               padding: '2px 8px',
               display: 'flex',
               alignItems: 'center',
               gap: 4,
+              fontWeight: 600,
             }}
           >
             <svg width={11} height={11} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

@@ -6,7 +6,7 @@ import { getTodos, createTodo } from '../../services/todoService'
 import { loadPrefs, savePref } from '../../services/listPreferences'
 import { useAuth } from '../../contexts/AuthContext'
 
-const DEFAULT_COLOR = '#2563EB'
+const DEFAULT_COLOR = '#1C1C1A'
 
 const isToday = (dateStr: string | null): boolean => {
   if (!dateStr) return false
@@ -91,7 +91,7 @@ export default function Home() {
     }))
 
   return (
-    <div style={{ minHeight: '100vh', backgroundColor: '#f8fafc', fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+    <div style={{ minHeight: '100vh', backgroundColor: '#EEEDE8', fontFamily: 'system-ui, -apple-system, sans-serif' }}>
       <Navbar />
 
       <main style={{ maxWidth: 1200, margin: '0 auto', padding: '32px 24px' }}>
@@ -112,17 +112,17 @@ export default function Home() {
                 margin: 0,
                 fontSize: 30,
                 fontWeight: 800,
-                color: '#111827',
+                color: '#1C1C1A',
                 letterSpacing: '-0.02em',
               }}
             >
               Bienvenido, {displayName}
             </h1>
-            <p style={{ margin: '8px 0 0', fontSize: 16, color: '#6b7280' }}>
+            <p style={{ margin: '8px 0 0', fontSize: 16, color: '#6B6B65' }}>
               {dueToday.length > 0 ? (
                 <>
                   Tienes{' '}
-                  <strong style={{ color: '#2563EB' }}>{dueToday.length} {dueToday.length === 1 ? 'tarea' : 'tareas'}</strong>{' '}
+                  <strong style={{ color: '#1C1C1A' }}>{dueToday.length} {dueToday.length === 1 ? 'tarea' : 'tareas'}</strong>{' '}
                   para hoy.
                 </>
               ) : (
@@ -149,10 +149,10 @@ export default function Home() {
           }}
         >
           <div>
-            <h2 style={{ margin: 0, fontSize: 20, fontWeight: 700, color: '#111827' }}>
+            <h2 style={{ margin: 0, fontSize: 20, fontWeight: 700, color: '#1C1C1A' }}>
               Mis listas
             </h2>
-            <p style={{ margin: '4px 0 0', fontSize: 13, color: '#9ca3af' }}>
+            <p style={{ margin: '4px 0 0', fontSize: 13, color: '#AEADA8' }}>
               {lists.length} {lists.length === 1 ? 'lista' : 'listas'} en total
             </p>
           </div>
@@ -164,8 +164,8 @@ export default function Home() {
               gap: 6,
               padding: '9px 18px',
               border: 'none',
-              borderRadius: 8,
-              backgroundColor: '#2563EB',
+              borderRadius: 20,
+              backgroundColor: '#1C1C1A',
               color: '#fff',
               fontSize: 14,
               fontWeight: 600,
@@ -182,7 +182,7 @@ export default function Home() {
 
         {/* Loading */}
         {loading && (
-          <div style={{ textAlign: 'center', padding: '60px 24px', color: '#9ca3af' }}>
+          <div style={{ textAlign: 'center', padding: '60px 24px', color: '#AEADA8' }}>
             <p style={{ fontSize: 16 }}>Cargando listas...</p>
           </div>
         )}
@@ -194,7 +194,7 @@ export default function Home() {
               textAlign: 'center',
               padding: '48px 24px',
               backgroundColor: '#fef2f2',
-              borderRadius: 12,
+              borderRadius: 16,
               border: '1px solid #fecaca',
             }}
           >
@@ -204,8 +204,8 @@ export default function Home() {
               style={{
                 padding: '9px 20px',
                 border: 'none',
-                borderRadius: 8,
-                backgroundColor: '#2563EB',
+                borderRadius: 20,
+                backgroundColor: '#1C1C1A',
                 color: '#fff',
                 fontSize: 14,
                 fontWeight: 600,
@@ -233,8 +233,8 @@ export default function Home() {
             </div>
 
             {lists.length === 0 && (
-              <div style={{ textAlign: 'center', padding: '60px 24px', color: '#9ca3af' }}>
-                <svg width={56} height={56} fill="none" viewBox="0 0 24 24" stroke="#d1d5db" strokeWidth={1.5} style={{ display: 'block', margin: '0 auto 16px' }}>
+              <div style={{ textAlign: 'center', padding: '60px 24px', color: '#AEADA8' }}>
+                <svg width={56} height={56} fill="none" viewBox="0 0 24 24" stroke="#D8D7D2" strokeWidth={1.5} style={{ display: 'block', margin: '0 auto 16px' }}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2" />
                 </svg>
                 <p style={{ fontSize: 16, margin: 0 }}>Sin listas aún. ¡Crea tu primera!</p>

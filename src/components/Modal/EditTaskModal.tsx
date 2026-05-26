@@ -12,20 +12,21 @@ interface EditTaskModalProps {
 const inputStyle: React.CSSProperties = {
   width: '100%',
   padding: '9px 12px',
-  border: '1px solid #e5e7eb',
-  borderRadius: 8,
+  border: '1px solid #E5E4DF',
+  borderRadius: 10,
   fontSize: 14,
-  color: '#111827',
+  color: '#1C1C1A',
   outline: 'none',
   boxSizing: 'border-box',
   fontFamily: 'inherit',
+  backgroundColor: '#F5F5F1',
 }
 
 const labelStyle: React.CSSProperties = {
   display: 'block',
   fontSize: 13,
   fontWeight: 600,
-  color: '#374151',
+  color: '#1C1C1A',
   marginBottom: 6,
 }
 
@@ -109,10 +110,10 @@ export default function EditTaskModal({ isOpen, onClose, task, onSave }: EditTas
             onClick={onClose}
             style={{
               padding: '9px 20px',
-              border: '1px solid #e5e7eb',
-              borderRadius: 8,
-              background: '#fff',
-              color: '#374151',
+              border: '1px solid #E5E4DF',
+              borderRadius: 10,
+              background: '#F5F5F1',
+              color: '#1C1C1A',
               fontSize: 14,
               fontWeight: 600,
               cursor: 'pointer',
@@ -126,8 +127,8 @@ export default function EditTaskModal({ isOpen, onClose, task, onSave }: EditTas
             style={{
               padding: '9px 20px',
               border: 'none',
-              borderRadius: 8,
-              background: title.trim() ? '#2563EB' : '#93c5fd',
+              borderRadius: 10,
+              background: title.trim() ? '#1C1C1A' : '#AEADA8',
               color: '#fff',
               fontSize: 14,
               fontWeight: 600,

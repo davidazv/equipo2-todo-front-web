@@ -16,7 +16,7 @@ export default function Modal({ isOpen, onClose, title, children }: ModalProps) 
       style={{
         position: 'fixed',
         inset: 0,
-        backgroundColor: 'rgba(0,0,0,0.45)',
+        backgroundColor: 'rgba(0,0,0,0.5)',
         backdropFilter: 'blur(4px)',
         display: 'flex',
         alignItems: 'center',
@@ -29,10 +29,10 @@ export default function Modal({ isOpen, onClose, title, children }: ModalProps) 
         onClick={(e) => e.stopPropagation()}
         style={{
           backgroundColor: '#fff',
-          borderRadius: 12,
+          borderRadius: 20,
           width: '100%',
           maxWidth: 480,
-          boxShadow: '0 20px 60px rgba(0,0,0,0.15)',
+          boxShadow: '0 24px 64px rgba(0,0,0,0.18)',
           overflow: 'hidden',
         }}
       >
@@ -42,28 +42,28 @@ export default function Modal({ isOpen, onClose, title, children }: ModalProps) 
             alignItems: 'center',
             justifyContent: 'space-between',
             padding: '20px 24px 16px',
-            borderBottom: '1px solid #f3f4f6',
+            borderBottom: '1px solid #F5F5F1',
           }}
         >
-          <h2 style={{ margin: 0, fontSize: 18, fontWeight: 700, color: '#111827' }}>
+          <h2 style={{ margin: 0, fontSize: 18, fontWeight: 700, color: '#1C1C1A' }}>
             {title}
           </h2>
           <button
             onClick={onClose}
             style={{
-              background: 'none',
+              background: '#F5F5F1',
               border: 'none',
               cursor: 'pointer',
-              padding: 4,
-              borderRadius: 6,
-              color: '#6b7280',
+              padding: 6,
+              borderRadius: 8,
+              color: '#6B6B65',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               lineHeight: 1,
             }}
           >
-            <svg width={20} height={20} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <svg width={18} height={18} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>

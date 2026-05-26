@@ -20,23 +20,24 @@ export default function TaskCard({ task, onToggle, onEdit, onDelete, isToggling 
         gap: 14,
         padding: '16px 18px',
         backgroundColor: '#fff',
-        border: '1px solid #e5e7eb',
-        borderRadius: 10,
-        opacity: completed ? 0.65 : 1,
+        borderRadius: 14,
+        opacity: completed ? 0.6 : 1,
         transition: 'opacity 0.2s',
+        boxShadow: '0 1px 4px rgba(0,0,0,0.06)',
       }}
     >
+      {/* Circular checkbox */}
       <button
         onClick={() => onToggle(id)}
         disabled={isToggling}
         aria-label={completed ? 'Marcar incompleto' : 'Marcar completo'}
         style={{
           marginTop: 2,
-          width: 20,
-          height: 20,
-          borderRadius: 5,
-          border: completed ? 'none' : '2px solid #d1d5db',
-          backgroundColor: completed ? '#2563EB' : 'transparent',
+          width: 22,
+          height: 22,
+          borderRadius: '50%',
+          border: completed ? 'none' : '2px solid #AEADA8',
+          backgroundColor: completed ? '#C5E63E' : 'transparent',
           cursor: isToggling ? 'wait' : 'pointer',
           display: 'flex',
           alignItems: 'center',
@@ -47,7 +48,7 @@ export default function TaskCard({ task, onToggle, onEdit, onDelete, isToggling 
         }}
       >
         {completed && (
-          <svg width={12} height={12} viewBox="0 0 12 12" fill="none" stroke="#fff" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+          <svg width={12} height={12} viewBox="0 0 12 12" fill="none" stroke="#1C1C1A" strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round">
             <polyline points="2,6 5,9 10,3" />
           </svg>
         )}
@@ -61,7 +62,7 @@ export default function TaskCard({ task, onToggle, onEdit, onDelete, isToggling 
                 margin: 0,
                 fontSize: 15,
                 fontWeight: 600,
-                color: completed ? '#9ca3af' : '#111827',
+                color: completed ? '#AEADA8' : '#1C1C1A',
                 textDecoration: completed ? 'line-through' : 'none',
               }}
             >
@@ -72,7 +73,7 @@ export default function TaskCard({ task, onToggle, onEdit, onDelete, isToggling 
                 style={{
                   margin: '4px 0 0',
                   fontSize: 13,
-                  color: '#6b7280',
+                  color: '#6B6B65',
                   lineHeight: 1.5,
                   overflow: 'hidden',
                   display: '-webkit-box',
@@ -85,7 +86,7 @@ export default function TaskCard({ task, onToggle, onEdit, onDelete, isToggling 
             )}
           </div>
 
-          <div style={{ display: 'flex', gap: 6, flexShrink: 0 }}>
+          <div style={{ display: 'flex', gap: 4, flexShrink: 0 }}>
             <button
               onClick={() => onEdit(task)}
               aria-label="Editar tarea"
@@ -93,9 +94,9 @@ export default function TaskCard({ task, onToggle, onEdit, onDelete, isToggling 
                 background: 'none',
                 border: 'none',
                 cursor: 'pointer',
-                padding: 4,
-                color: '#6b7280',
-                borderRadius: 4,
+                padding: '4px 6px',
+                color: '#6B6B65',
+                borderRadius: 8,
                 display: 'flex',
                 alignItems: 'center',
               }}
@@ -111,9 +112,9 @@ export default function TaskCard({ task, onToggle, onEdit, onDelete, isToggling 
                 background: 'none',
                 border: 'none',
                 cursor: 'pointer',
-                padding: 4,
+                padding: '4px 6px',
                 color: '#ef4444',
-                borderRadius: 4,
+                borderRadius: 8,
                 display: 'flex',
                 alignItems: 'center',
               }}
@@ -133,11 +134,11 @@ export default function TaskCard({ task, onToggle, onEdit, onDelete, isToggling 
                 alignItems: 'center',
                 gap: 4,
                 fontSize: 12,
-                color: '#374151',
-                backgroundColor: '#f9fafb',
-                border: '1px solid #e5e7eb',
+                color: '#6B6B65',
+                backgroundColor: '#F5F5F1',
                 borderRadius: 6,
                 padding: '2px 8px',
+                fontWeight: 600,
               }}
             >
               <svg width={12} height={12} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

@@ -36,9 +36,8 @@ export default function Navbar() {
         position: 'sticky',
         top: 0,
         zIndex: 100,
-        backgroundColor: '#fff',
-        borderBottom: '1px solid #e5e7eb',
-        boxShadow: '0 1px 4px rgba(0,0,0,0.05)',
+        backgroundColor: '#EEEDE8',
+        borderBottom: '1px solid #D8D7D2',
       }}
     >
       <nav
@@ -59,7 +58,7 @@ export default function Navbar() {
             textDecoration: 'none',
             fontSize: 18,
             fontWeight: 800,
-            color: '#111827',
+            color: '#1C1C1A',
             letterSpacing: '-0.02em',
             flexShrink: 0,
             display: 'flex',
@@ -67,7 +66,7 @@ export default function Navbar() {
             gap: 8,
           }}
         >
-          <span style={{ color: '#2563EB' }}>✦</span>
+          <span style={{ color: '#C5E63E' }}>✦</span>
           EduTask
         </Link>
 
@@ -87,11 +86,11 @@ export default function Navbar() {
               alignItems: 'center',
               gap: 8,
               padding: '7px 14px',
-              border: '1px solid #e5e7eb',
-              borderRadius: 8,
+              border: '1px solid #E5E4DF',
+              borderRadius: 20,
               cursor: 'pointer',
-              backgroundColor: '#f9fafb',
-              color: '#9ca3af',
+              backgroundColor: '#F5F5F1',
+              color: '#AEADA8',
               fontSize: 14,
               minWidth: 180,
             }}
@@ -106,7 +105,7 @@ export default function Navbar() {
           {/* Avatar dropdown */}
           <div ref={dropdownRef} style={{ position: 'relative' }}>
             <div onClick={() => setDropdownOpen((o) => !o)}>
-              <Avatar initials={initial} color="#f97316" />
+              <Avatar initials={initial} color="#1C1C1A" />
             </div>
 
             {dropdownOpen && (
@@ -116,21 +115,21 @@ export default function Navbar() {
                   top: 'calc(100% + 8px)',
                   right: 0,
                   backgroundColor: '#fff',
-                  borderRadius: 10,
-                  border: '1px solid #e5e7eb',
-                  boxShadow: '0 8px 24px rgba(0,0,0,0.10)',
+                  borderRadius: 14,
+                  border: '1px solid #E5E4DF',
+                  boxShadow: '0 8px 32px rgba(0,0,0,0.12)',
                   minWidth: 200,
                   overflow: 'hidden',
                   zIndex: 200,
                 }}
               >
                 {/* User info */}
-                <div style={{ padding: '12px 16px', borderBottom: '1px solid #f3f4f6' }}>
-                  <p style={{ margin: 0, fontSize: 13, fontWeight: 700, color: '#111827' }}>
+                <div style={{ padding: '12px 16px', borderBottom: '1px solid #F5F5F1' }}>
+                  <p style={{ margin: 0, fontSize: 13, fontWeight: 700, color: '#1C1C1A' }}>
                     {displayName}
                   </p>
                   {user?.email && (
-                    <p style={{ margin: '2px 0 0', fontSize: 12, color: '#6b7280' }}>
+                    <p style={{ margin: '2px 0 0', fontSize: 12, color: '#6B6B65' }}>
                       {user.email}
                     </p>
                   )}
@@ -149,7 +148,7 @@ export default function Navbar() {
                     background: 'none',
                     cursor: 'pointer',
                     fontSize: 14,
-                    color: '#374151',
+                    color: '#1C1C1A',
                     textAlign: 'left',
                   }}
                 >
@@ -168,7 +167,7 @@ export default function Navbar() {
                     width: '100%',
                     padding: '11px 16px',
                     border: 'none',
-                    borderTop: '1px solid #f3f4f6',
+                    borderTop: '1px solid #F5F5F1',
                     background: 'none',
                     cursor: 'pointer',
                     fontSize: 14,
@@ -203,11 +202,11 @@ function NavLink({ to, isActive, children }: NavLinkProps) {
       style={{
         textDecoration: 'none',
         padding: '6px 14px',
-        borderRadius: 8,
+        borderRadius: 20,
         fontSize: 14,
         fontWeight: 600,
-        color: isActive ? '#2563EB' : '#374151',
-        backgroundColor: isActive ? '#eff6ff' : 'transparent',
+        color: isActive ? '#1C1C1A' : '#6B6B65',
+        backgroundColor: isActive ? '#C5E63E' : 'transparent',
         transition: 'background-color 0.15s, color 0.15s',
       }}
     >

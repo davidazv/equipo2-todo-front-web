@@ -9,10 +9,10 @@ interface CreateNewTaskFormProps {
 const inputStyle: React.CSSProperties = {
   width: '100%',
   padding: '9px 12px',
-  border: '1px solid #e5e7eb',
-  borderRadius: 8,
+  border: '1px solid #E5E4DF',
+  borderRadius: 10,
   fontSize: 14,
-  color: '#111827',
+  color: '#1C1C1A',
   outline: 'none',
   boxSizing: 'border-box',
   fontFamily: 'inherit',
@@ -23,7 +23,7 @@ const labelStyle: React.CSSProperties = {
   display: 'block',
   fontSize: 12,
   fontWeight: 600,
-  color: '#6b7280',
+  color: '#6B6B65',
   marginBottom: 5,
   textTransform: 'uppercase',
   letterSpacing: '0.05em',
@@ -48,9 +48,9 @@ export default function CreateNewTaskForm({ onSubmit, isLoading }: CreateNewTask
   return (
     <div
       style={{
-        backgroundColor: '#f9fafb',
-        border: '1px dashed #d1d5db',
-        borderRadius: 12,
+        backgroundColor: '#F5F5F1',
+        border: '1.5px dashed #D8D7D2',
+        borderRadius: 16,
         padding: '20px 24px',
         marginTop: 8,
       }}
@@ -60,7 +60,7 @@ export default function CreateNewTaskForm({ onSubmit, isLoading }: CreateNewTask
           margin: '0 0 16px',
           fontSize: 13,
           fontWeight: 700,
-          color: '#374151',
+          color: '#1C1C1A',
           textTransform: 'uppercase',
           letterSpacing: '0.08em',
         }}
@@ -122,8 +122,8 @@ export default function CreateNewTaskForm({ onSubmit, isLoading }: CreateNewTask
             style={{
               padding: '10px 20px',
               border: 'none',
-              borderRadius: 8,
-              background: title.trim() && !isLoading ? '#2563EB' : '#93c5fd',
+              borderRadius: 20,
+              background: title.trim() && !isLoading ? '#1C1C1A' : '#AEADA8',
               color: '#fff',
               fontSize: 13,
               fontWeight: 700,
