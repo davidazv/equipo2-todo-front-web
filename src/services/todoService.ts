@@ -6,6 +6,11 @@ export const getTodos = async (): Promise<ApiTodo[]> => {
   return response.data
 }
 
+export const searchTodos = async (query: string): Promise<ApiTodo[]> => {
+  const response = await api.get<ApiTodo[]>('/todos/search', { params: { q: query } })
+  return response.data
+}
+
 export const getTodoById = async (id: string): Promise<ApiTodo> => {
   const response = await api.get<ApiTodo>(`/todos/${id}`)
   return response.data
