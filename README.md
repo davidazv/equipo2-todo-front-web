@@ -30,7 +30,7 @@ VITE_FIREBASE_PROJECT_ID=tu_proyecto_id
 VITE_FIREBASE_STORAGE_BUCKET=tu_proyecto.firebasestorage.app
 VITE_FIREBASE_MESSAGING_SENDER_ID=tu_messaging_sender_id
 VITE_FIREBASE_APP_ID=tu_app_id
-VITE_API_URL=http://localhost:8081
+VITE_API_URL=http://localhost:8080
 ```
 
 > Los valores de Firebase son los mismos que usa la app mobile (equipo2-todo-front-mobile).
@@ -136,3 +136,20 @@ src/
 | `/tasks/:id` | Detalle de una lista | Privada |
 | `/search` | Búsqueda global | Privada |
 | `/about` | Perfil y cerrar sesión | Privada |
+
+---
+
+## Usuarios de prueba
+
+| Email | Contraseña | Descripción |
+|-------|-----------|-------------|
+| `test@example.com` | `Test1234!` | Usuario de prueba general |
+
+> Crea el usuario desde la pantalla de Registro, o con `POST /users` en el backend.
+
+---
+
+## Notas
+
+- El backend debe estar corriendo antes de iniciar la app.
+- Los valores de Firebase son los mismos que usa la app mobile.
