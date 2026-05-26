@@ -44,7 +44,7 @@ export default function Register() {
     <div
       style={{
         minHeight: '100vh',
-        backgroundColor: '#f8fafc',
+        backgroundColor: '#EEEDE8',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -55,21 +55,20 @@ export default function Register() {
       <div
         style={{
           backgroundColor: '#fff',
-          borderRadius: 16,
+          borderRadius: 20,
           padding: '40px 36px',
           width: '100%',
           maxWidth: 420,
-          boxShadow: '0 4px 24px rgba(0,0,0,0.08)',
-          border: '1px solid #e5e7eb',
+          boxShadow: '0 4px 24px rgba(0,0,0,0.09)',
         }}
       >
         {/* Brand */}
         <div style={{ textAlign: 'center', marginBottom: 28 }}>
-          <span style={{ fontSize: 28, color: '#2563EB' }}>✦</span>
-          <h1 style={{ margin: '8px 0 4px', fontSize: 24, fontWeight: 800, color: '#111827' }}>
+          <span style={{ fontSize: 32, color: '#C5E63E' }}>✦</span>
+          <h1 style={{ margin: '8px 0 4px', fontSize: 24, fontWeight: 800, color: '#1C1C1A' }}>
             Crear cuenta
           </h1>
-          <p style={{ margin: 0, fontSize: 14, color: '#6b7280' }}>
+          <p style={{ margin: 0, fontSize: 14, color: '#6B6B65' }}>
             Regístrate para empezar
           </p>
         </div>
@@ -79,7 +78,7 @@ export default function Register() {
             style={{
               backgroundColor: '#fef2f2',
               border: '1px solid #fecaca',
-              borderRadius: 8,
+              borderRadius: 10,
               padding: '10px 16px',
               marginBottom: 16,
               fontSize: 14,
@@ -92,7 +91,7 @@ export default function Register() {
 
         <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
           <div>
-            <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: '#374151', marginBottom: 6 }}>
+            <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: '#1C1C1A', marginBottom: 6 }}>
               Nombre completo
             </label>
             <input
@@ -103,17 +102,19 @@ export default function Register() {
               style={{
                 width: '100%',
                 padding: '11px 14px',
-                border: '1px solid #d1d5db',
+                border: '1px solid #E5E4DF',
                 borderRadius: 10,
                 fontSize: 15,
                 outline: 'none',
                 boxSizing: 'border-box',
+                backgroundColor: '#F5F5F1',
+                color: '#1C1C1A',
               }}
             />
           </div>
 
           <div>
-            <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: '#374151', marginBottom: 6 }}>
+            <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: '#1C1C1A', marginBottom: 6 }}>
               Correo electrónico
             </label>
             <input
@@ -125,17 +126,19 @@ export default function Register() {
               style={{
                 width: '100%',
                 padding: '11px 14px',
-                border: '1px solid #d1d5db',
+                border: '1px solid #E5E4DF',
                 borderRadius: 10,
                 fontSize: 15,
                 outline: 'none',
                 boxSizing: 'border-box',
+                backgroundColor: '#F5F5F1',
+                color: '#1C1C1A',
               }}
             />
           </div>
 
           <div>
-            <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: '#374151', marginBottom: 6 }}>
+            <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: '#1C1C1A', marginBottom: 6 }}>
               Contraseña
             </label>
             <input
@@ -146,11 +149,13 @@ export default function Register() {
               style={{
                 width: '100%',
                 padding: '11px 14px',
-                border: '1px solid #d1d5db',
+                border: '1px solid #E5E4DF',
                 borderRadius: 10,
                 fontSize: 15,
                 outline: 'none',
                 boxSizing: 'border-box',
+                backgroundColor: '#F5F5F1',
+                color: '#1C1C1A',
               }}
             />
           </div>
@@ -161,8 +166,8 @@ export default function Register() {
             style={{
               padding: '13px',
               border: 'none',
-              borderRadius: 10,
-              backgroundColor: loading ? '#93c5fd' : '#2563EB',
+              borderRadius: 12,
+              backgroundColor: loading ? '#6B6B65' : '#1C1C1A',
               color: '#fff',
               fontSize: 15,
               fontWeight: 700,
@@ -174,10 +179,15 @@ export default function Register() {
           </button>
         </form>
 
-        <p style={{ marginTop: 20, textAlign: 'center', fontSize: 14, color: '#6b7280' }}>
+        <p style={{ marginTop: 20, textAlign: 'center', fontSize: 14, color: '#6B6B65' }}>
           ¿Ya tienes cuenta?{' '}
-          <Link to="/login" style={{ color: '#2563EB', fontWeight: 600, textDecoration: 'none' }}>
+          <Link to="/login" style={{ color: '#1C1C1A', fontWeight: 700, textDecoration: 'none' }}>
             Inicia sesión
+          </Link>
+        </p>
+        <p style={{ marginTop: 8, textAlign: 'center', fontSize: 14, color: '#AEADA8' }}>
+          <Link to="/welcome" style={{ color: '#AEADA8', textDecoration: 'none' }}>
+            ← Volver
           </Link>
         </p>
       </div>
