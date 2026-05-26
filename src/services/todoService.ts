@@ -35,7 +35,7 @@ export const createTask = async (
     description: data.description ?? '',
     parentId: listId,
     priority: data.priority ?? null,
-    dueDate: data.dueDate ?? null,
+    dueDate: data.dueDate ? `${data.dueDate}T00:00:00` : null,
   })
   return response.data
 }
@@ -55,7 +55,10 @@ export const updateTodo = async (
     dueDate?: string | null
   },
 ): Promise<ApiTodo> => {
-  const response = await api.put<ApiTodo>(`/todos/${id}`, data)
+  const response = await api.put<ApiTodo>(`/todos/${id}`, {
+    ...data,
+    dueDate: data.dueDate ? `${data.dueDate}T00:00:00` : data.dueDate ?? null,
+  })
   return response.data
 }
 
