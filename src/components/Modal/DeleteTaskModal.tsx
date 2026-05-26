@@ -20,11 +20,11 @@ export default function DeleteTaskModal({ isOpen, onClose, onConfirm, itemName =
           style={{
             padding: 16,
             backgroundColor: '#fef2f2',
-            borderRadius: 8,
+            borderRadius: 10,
             border: '1px solid #fecaca',
           }}
         >
-          <p style={{ margin: 0, fontSize: 14, lineHeight: 1.6, color: '#374151' }}>
+          <p style={{ margin: 0, fontSize: 14, lineHeight: 1.6, color: '#1C1C1A' }}>
             ¿Estás seguro de que quieres eliminar <strong>{itemName}</strong>? Esta acción es
             permanente y no se puede deshacer.
           </p>
@@ -35,10 +35,10 @@ export default function DeleteTaskModal({ isOpen, onClose, onConfirm, itemName =
             onClick={onClose}
             style={{
               padding: '9px 20px',
-              border: '1px solid #e5e7eb',
-              borderRadius: 8,
-              background: '#fff',
-              color: '#374151',
+              border: '1px solid #E5E4DF',
+              borderRadius: 10,
+              background: '#F5F5F1',
+              color: '#1C1C1A',
               fontSize: 14,
               fontWeight: 600,
               cursor: 'pointer',
@@ -51,7 +51,7 @@ export default function DeleteTaskModal({ isOpen, onClose, onConfirm, itemName =
             style={{
               padding: '9px 20px',
               border: 'none',
-              borderRadius: 8,
+              borderRadius: 10,
               background: '#ef4444',
               color: '#fff',
               fontSize: 14,

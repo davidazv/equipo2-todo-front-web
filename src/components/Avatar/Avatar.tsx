@@ -4,7 +4,7 @@ interface AvatarProps {
   color?: string
 }
 
-export default function Avatar({ size = 36, initials = 'SA', color = '#2563EB' }: AvatarProps) {
+export default function Avatar({ size = 36, initials = 'SA', color = '#1C1C1A' }: AvatarProps) {
   return (
     <div
       style={{

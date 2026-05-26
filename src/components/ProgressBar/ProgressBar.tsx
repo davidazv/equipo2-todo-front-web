@@ -11,7 +11,7 @@ export default function ProgressBar({ value, color = '#2563EB' }: ProgressBarPro
       style={{
         width: '100%',
         height: 6,
-        backgroundColor: '#e5e7eb',
+        backgroundColor: '#E5E4DF',
         borderRadius: 9999,
         overflow: 'hidden',
       }}

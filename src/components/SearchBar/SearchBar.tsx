@@ -14,10 +14,10 @@ export default function SearchBar({
       <svg
         style={{
           position: 'absolute',
-          left: 12,
+          left: 14,
           width: 18,
           height: 18,
-          color: '#9ca3af',
+          color: '#AEADA8',
           pointerEvents: 'none',
           flexShrink: 0,
         }}
@@ -38,17 +38,18 @@ export default function SearchBar({
         autoFocus
         style={{
           width: '100%',
-          paddingLeft: 40,
+          paddingLeft: 44,
           paddingRight: 16,
-          paddingTop: 10,
-          paddingBottom: 10,
-          border: '1px solid #e5e7eb',
-          borderRadius: 8,
-          fontSize: 14,
-          color: '#111827',
+          paddingTop: 12,
+          paddingBottom: 12,
+          border: '1px solid #E5E4DF',
+          borderRadius: 20,
+          fontSize: 15,
+          color: '#1C1C1A',
           backgroundColor: '#fff',
           outline: 'none',
           boxSizing: 'border-box',
+          boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
         }}
       />
     </div>
