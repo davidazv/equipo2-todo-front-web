@@ -23,7 +23,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
+    const timeout = setTimeout(() => setIsLoading(false), 5000)
+
     const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+      clearTimeout(timeout)
       setUser(firebaseUser)
       if (firebaseUser) {
         setToken(getToken())
@@ -32,7 +35,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       }
       setIsLoading(false)
     })
-    return unsubscribe
+
+    return () => {
+      clearTimeout(timeout)
+      unsubscribe()
+    }
   }, [])
 
   return (
