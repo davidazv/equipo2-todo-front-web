@@ -20,34 +20,17 @@ const toPriority = (p: string | null): 'low' | 'medium' | 'high' => {
   return p.toLowerCase() as 'low' | 'medium' | 'high'
 }
 
-const flattenTodos = (todos: ApiTodo[]): SearchItem[] => {
-  const items: SearchItem[] = []
-  for (const todo of todos) {
-    items.push({
-      id: todo.id,
-      title: todo.title,
-      description: todo.description ?? '',
-      listName: '(Lista principal)',
-      listId: todo.id,
-      dueDate: todo.dueDate,
-      priority: toPriority(todo.priority),
-      completed: todo.completed,
-    })
-    for (const task of todo.tasks ?? []) {
-      items.push({
-        id: task.id,
-        title: task.title,
-        description: task.description ?? '',
-        listName: todo.title,
-        listId: todo.id,
-        dueDate: task.dueDate,
-        priority: toPriority(task.priority),
-        completed: task.completed,
-      })
-    }
-  }
-  return items
-}
+const mapResults = (todos: ApiTodo[]): SearchItem[] =>
+  todos.map((todo) => ({
+    id: todo.id,
+    title: todo.title,
+    description: todo.description ?? '',
+    listName: todo.parentId ? 'Tarea' : 'Lista',
+    listId: todo.parentId ?? todo.id,
+    dueDate: todo.dueDate,
+    priority: toPriority(todo.priority),
+    completed: todo.completed,
+  }))
 
 export default function Search() {
   const navigate = useNavigate()
@@ -64,7 +47,7 @@ export default function Search() {
     setLoading(true)
     const timer = setTimeout(() => {
       searchTodos(q)
-        .then((todos) => setFiltered(flattenTodos(todos)))
+        .then((todos) => setFiltered(mapResults(todos)))
         .catch(() => setFiltered([]))
         .finally(() => setLoading(false))
     }, 400)
