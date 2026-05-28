@@ -54,12 +54,8 @@ export default function Register() {
     >
       <div
         style={{
-          backgroundColor: '#fff',
-          borderRadius: 20,
-          padding: '40px 36px',
           width: '100%',
           maxWidth: 420,
-          boxShadow: '0 4px 24px rgba(0,0,0,0.09)',
         }}
       >
         {/* Brand */}

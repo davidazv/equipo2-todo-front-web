@@ -71,9 +71,9 @@ export default function Welcome() {
           onClick={() => navigate('/register')}
           style={{
             padding: '17px',
-            border: '1.5px solid rgba(28,28,26,0.25)',
+            border: '1.5px solid rgba(28,28,26,0.35)',
             borderRadius: 16,
-            backgroundColor: 'transparent',
+            backgroundColor: '#E0DFD9',
             color: '#1C1C1A',
             fontSize: 16,
             fontWeight: 600,
